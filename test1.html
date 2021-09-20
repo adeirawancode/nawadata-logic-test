@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>
+		Test 1
+	</title>
+</head>
+
+<body>
+
+	<h3>Sort Characters</h3>
+	<form class="" action="test1.html" method="post">
+        <label>Input one line of words : </label>
+        <input type="text" id="idWords" value="" required><br>
+		<button type="button" onclick="sort()">
+			Submit
+		</button>
+	</form>
+	<br>
+
+	<p id="vowel"></p>
+    <p id="consonant"></p>
+
+	<script type="text/javascript">
+		function sort() {
+            let inputWords = document.getElementById("idWords").value;
+            let words = inputWords
+            .toLowerCase() // for better compare and sort
+            .split("") // convert string to array
+            .filter(el => el !== " ") // remove spaces
+            
+            let vowel = words
+            .filter(el => "aiueo" // to find vowel letters
+            .split("") // to create vowel letter array
+            .includes(el))
+            .sort((a,b) => !a.localeCompare(b)) // sort 
+            .join('') // to convert array to string
+            
+            let consonant = words
+            .filter(el => !"aiueo"
+            .split("")
+            .includes(el))
+            .sort((a,b) => !a.localeCompare(b))
+            .join('')
+            
+            document.getElementById("vowel").innerHTML = "Vowel Characters : " + vowel;
+            document.getElementById("consonant").innerHTML = "Consonant Characters : " + consonant;
+		}
+	</script>
+</body>
+
+</html>

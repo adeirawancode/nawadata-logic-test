@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>
+		Test 2
+	</title>
+</head>
+
+<body>
+
+	<h3>Minibus Rental</h3>
+	<form class="" action="test2.html" method="post">
+        <label>Input the number of families : </label>
+        <input type="number" id="idFamily" value="" required><br>
+        <label>Input the number of members in the family :</label>
+		<input type="text" id="idFamilyMembers" value="" required><br>
+		<button type="button" onclick="getBus()">
+			Submit
+		</button>
+	</form>
+	<br>
+
+	<p id="result"></p>
+
+	<script type="text/javascript">
+		function getBus() {
+            // get value family from input
+            let family = document.getElementById("idFamily").value;
+            // get value family members from input
+            let familyMembers = document.getElementById("idFamilyMembers").value;
+            // change value family members to array & mapping to float
+            const arrayFamilyMembers = familyMembers.split(" ").map(member => parseFloat(member));
+            // count all value array family members
+            const countFamilyMembers = arrayFamilyMembers.reduce((a,b) => a+b);
+            // initial value minimum bus
+            let minimumBus = 0;
+            
+            if (family != arrayFamilyMembers.length) {
+                document.getElementById("result").innerHTML = "Input must be equal with count of family";
+            } else { 
+                minimumBus = countFamilyMembers / 4;
+                document.getElementById("result").innerHTML = "Minimum bus required is : " + Math.ceil(minimumBus);
+            }
+		}
+	</script>
+</body>
+
+</html>
